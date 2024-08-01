@@ -8,6 +8,7 @@ body {
     align-items: center;
     font-size: x-large;
     font-weight: 550;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 div {
@@ -26,4 +27,9 @@ button {
 
 .select {
     display: flex;
+}
+
+.score {
+    font-size: medium;
+    font-weight: 550;
 }
