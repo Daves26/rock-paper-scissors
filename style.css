@@ -1,0 +1,29 @@
+body {
+    color: antiquewhite;
+    background-color: #111827;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: 550;
+}
+
+div {
+    margin: 3vh;
+}
+
+button {
+    background: antiquewhite;
+    color: #111827;
+    padding: 10px;
+    margin: 10px;
+    min-width: 97px;   
+    font-weight: 550;
+    border-radius: 10px;
+}
+
+.select {
+    display: flex;
+}
