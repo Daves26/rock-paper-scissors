@@ -7,7 +7,11 @@ const humanPoints = document.querySelector("#human_points");
 const computerPoints = document.querySelector("#computer_points");
 const body = document.querySelector("body");
 
-const buttons = document.querySelectorAll("button");
+// New game button
+const newGameButton = document.createElement('button');
+newGameButton.textContent = 'New Game';
+
+const buttons = document.querySelectorAll(".element");
 
 function getComputerChoice() {
     let index = Math.floor(Math.random() * 3);
@@ -41,26 +45,42 @@ function playRound(computerChoice, humanChoice) {
 function playGame() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            if (roundsPlayed == 5) {
+
+            if (roundsPlayed >= 5) {
                 if (humanScore > computerScore) {
                     body.style.backgroundColor = "#112716"
                     results.textContent = "=== Congratulations! You Win! ===";
+                    body.appendChild(newGameButton);
                     return;
                 } else if (computerScore > humanScore) {
                     body.style.backgroundColor = "#271111"
                     results.textContent = "=== You Lose ===";
+                    body.appendChild(newGameButton);
                     return;
                 } else {
                     body.style.backgroundColor = "#1a1e27"
-                    results.textContent = "=== Tied! ===";
+                    results.textContent = "Match Point!";
                 }
+                
             }
+
             let computerChoice = getComputerChoice();
             let humanChoice = button.id;
             let result = playRound(computerChoice, humanChoice);
             results.textContent = result;
         });
     });
+
+    newGameButton.addEventListener('click', () => {
+        roundsPlayed = 0;
+        humanScore = 0;
+        computerScore = 0;
+        results.textContent = '';
+        body.style.backgroundColor = '#111827'
+        newGameButton.remove();
+        humanPoints.textContent = humanScore;
+        computerPoints.textContent = computerScore;
+    })
 }
 
 playGame();
