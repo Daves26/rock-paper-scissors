@@ -8,28 +8,6 @@ const computerPoints = document.querySelector("#computer_points");
 const body = document.querySelector("body");
 
 const buttons = document.querySelectorAll("button");
-buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        if (roundsPlayed === 5) {
-            if (humanScore > computerScore) {
-                body.style.backgroundColor = "#112716"
-                results.textContent = "=== Congratulations! You Win! ===";
-                return;
-            } else if (computerScore > humanScore) {
-                body.style.backgroundColor = "#271111"
-                results.textContent = "=== You Lose ===";
-                return;
-            } else {
-                body.style.backgroundColor = "#1a1e27"
-                results.textContent = "=== Tied! ===";
-            }
-        }
-        let computerChoice = getComputerChoice();
-        let humanChoice = button.id;
-        let result = playRound(computerChoice, humanChoice);
-        results.textContent = result;
-    });
-});
 
 function getComputerChoice() {
     let index = Math.floor(Math.random() * 3);
@@ -59,3 +37,30 @@ function playRound(computerChoice, humanChoice) {
         return "You lose! " + computerChoice + " beats " + humanChoice;
     }
 }
+
+function playGame() {
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (roundsPlayed == 5) {
+                if (humanScore > computerScore) {
+                    body.style.backgroundColor = "#112716"
+                    results.textContent = "=== Congratulations! You Win! ===";
+                    return;
+                } else if (computerScore > humanScore) {
+                    body.style.backgroundColor = "#271111"
+                    results.textContent = "=== You Lose ===";
+                    return;
+                } else {
+                    body.style.backgroundColor = "#1a1e27"
+                    results.textContent = "=== Tied! ===";
+                }
+            }
+            let computerChoice = getComputerChoice();
+            let humanChoice = button.id;
+            let result = playRound(computerChoice, humanChoice);
+            results.textContent = result;
+        });
+    });
+}
+
+playGame();
